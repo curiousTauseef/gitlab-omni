@@ -1,0 +1,25 @@
+{
+  "name": "gitlab-cookbook",
+  "description": "Run local cookbook.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "gitlab-omni": {
+      "config": {
+        "external_url": "https://localhost"
+      },
+      "rails": {
+        "config": {
+          "gitlab_restricted_visibility_levels": ["public"]
+        }
+      }
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[gitlab-omni]"
+  ],
+  "env_run_lists": {
+  }
+}

@@ -1,0 +1,25 @@
+# File created by chef, changes will be overwritten next chef run
+external_url '<%= node['gitlab-omni']['config']['external_url'] %>'
+git_data_dir '<%= node['gitlab-omni']['config']['git_data_dir'] %>'
+
+# Setup nginx configuration (vhost) from node attributes
+<% node['gitlab-omni']['nginx']['config'].each do |var, value| %>
+nginx['<%= var %>'] = <% if value.is_a? String %>'<%= value %>'<% else %><%= value %><% end %>
+<% end %>
+
+# Setup Gitlab Rails application from node attributes
+<% node['gitlab-omni']['rails']['config'].each do |var, value| %>
+gitlab_rails['<%= var %>'] = <% if value.is_a? String %>'<%= value %>'<% else %><%= value %><% end %>
+<% end %>
+
+# LDAP information was read from a encrypted data bag
+<% if node['gitlab-omni']['rails']['config']['ldap_enabled'] %>
+gitlab_rails['ldap_host'] = '<%= @ldap_host %>'
+gitlab_rails['ldap_port'] = <%= @ldap_port %>
+gitlab_rails['ldap_uid'] = '<%= @ldap_uid %>'
+gitlab_rails['ldap_method'] = '<%= @ldap_method %>'
+gitlab_rails['ldap_bind_dn'] = '<%= @ldap_bind_dn %>'
+gitlab_rails['ldap_password'] = '<%= @ldap_password %>'
+gitlab_rails['ldap_allow_username_or_email_login'] = <%= @ldap_allow_username_or_email_login ? 'true' : 'false' %>
+gitlab_rails['ldap_base'] = '<%= @ldap_base %>'
+<% end %>
