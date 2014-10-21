@@ -4,6 +4,10 @@ default['gitlab-omni']['omnibus']['url'] = value_for_platform(
   'debian' => {
     'default' => 'https://downloads-packages.s3.amazonaws.com/debian-7.6/gitlab_7.3.2-omnibus-1_amd64.deb'
   },
+  'ubuntu' => {
+    '12.04' => 'https://downloads-packages.s3.amazonaws.com/ubuntu-12.04/gitlab_7.3.2-omnibus-1_amd64.deb',
+    '14.04' => 'https://downloads-packages.s3.amazonaws.com/ubuntu-14.04/gitlab_7.3.2-omnibus-1_amd64.deb'
+  },
   'centos' => {
     '7.0' => 'https://downloads-packages.s3.amazonaws.com/centos-7.0.1406/gitlab-7.3.2_omnibus-1.el7.x86_64.rpm',
     '7.0.1406' => 'https://downloads-packages.s3.amazonaws.com/centos-7.0.1406/gitlab-7.3.2_omnibus-1.el7.x86_64.rpm',
@@ -13,6 +17,10 @@ default['gitlab-omni']['omnibus']['url'] = value_for_platform(
 default['gitlab-omni']['omnibus']['checksum'] = value_for_platform(
   'debian' => {
     'default' => '8cadae4bee9aba0ffdb1025d1075c1a3fcd973ffb3b292b6592a5ab6179dcd16'
+  },
+  'ubuntu' => {
+    '12.04' => '36b7a1c449c94da27c807391e08c371a0385c50202596750a5244930f2c1b1e0',
+    '14.04' => 'b0551e4f8e18dce0c6848c9e2498b57a00904b5710b4665a000941d0faff6c4f'
   },
   'centos' => {
     '7.0' => 'c3de7aa6979997190014660ac1bb4848879e8bdcdd797e8231d07446feb1b3db',

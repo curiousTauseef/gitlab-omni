@@ -17,7 +17,7 @@ remote_file file do
 end
 
 package 'gitlab' do
-  provider Chef::Provider::Package::Dpkg if node['platform'] == 'debian'
+  provider Chef::Provider::Package::Dpkg if node['platform'] == 'debian' || node['platform'] == 'ubuntu'
   action :nothing
   source file
 end
