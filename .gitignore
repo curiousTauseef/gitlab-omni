@@ -7,7 +7,6 @@
 # Berkshelf
 /cookbooks/
 Berksfile.lock
-Gemfile.lock
 
 # Librarian
 /tmp/
